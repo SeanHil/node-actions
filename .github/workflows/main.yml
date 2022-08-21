@@ -5,14 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+      - name: checkout
+        uses: actions/checkout@v2 # GITHUB_WORKSPACE
+
       - name: Hello world action step
         id: hello
-        uses: actions/javascript-actions@v1
+        uses: ./
         with:
-          who-to-greet: 'Sean T Man'
+          who-to-greet: 'Sean The Man'
 
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 
 
-        
